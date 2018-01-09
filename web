@@ -1,0 +1,51 @@
+ echarts y轴居中
+在工作可能需要使用echarts时需要实现 y轴实时居中的效果
+接下来直接贴出相关代码(ps:代码才是主要)
+
+     // 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+// 获取echarts的宽度并让y轴居中
+    var center = '-' + $('#main').width() *0.7 /2 + '';
+option = {
+    grid:{
+      width:'70%'//坐标轴宽度
+    },
+    legend: {
+        data:['事例1','事例2']
+    },
+    xAxis:  {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value',
+        offset:center//y轴位置
+    },
+    calculable : true,
+    series: [
+        {
+            name:'示例1',
+            type:'line',
+            data:[11, 11, 15, 13, 12, 13, 10]
+        },
+        {
+            name:'示例2',
+            type:'line',
+            data:[1, -2, 2, 5, 3, 2, 0]
+        }
+    ]
+};
+myChart.setOption(option);
+//如果直接调用resize方法可能会导致window宽度改变时echart的线与坐标轴会不同步
+//这是因为窗口改变大小过快会导致一定的bug
+//在ie8和一些Opera浏览器中 resize事件会被重复调用(ps:我用的是1.10的jquery 过高的版本不支持ie8)
+//所以需要引入一位外国小哥的resize插件就能较好的解决这个问题
+$(window).resize(function(){
+    center = '-' + $('#main').width() *0.7 / 2 + ''; 
+    option.yAxis.offset = center;
+    myChart.resize();  
+    myChart.setOption(option);
+})
+  
+  
