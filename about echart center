@@ -40,7 +40,7 @@ myChart.setOption(option);
 //如果直接调用resize方法可能会导致window宽度改变时echart的线与坐标轴会不同步
 //这是因为窗口改变大小过快会导致一定的bug
 //在ie8和一些Opera浏览器中 resize事件会被重复调用(ps:我用的是1.10的jquery 过高的版本不支持ie8)
-//所以需要引入一位外国小哥的resize插件就能较好的解决这个问题
+//所以需要引入一位外国小哥的resize插件就能较好的解决这个问题(ps:jquery.ba-resize.js)
 $(window).resize(function(){
     center = '-' + $('#main').width() *0.7 / 2 + ''; 
     option.yAxis.offset = center;
