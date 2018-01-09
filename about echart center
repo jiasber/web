@@ -2,10 +2,10 @@
 在工作可能需要使用echarts时需要实现 y轴实时居中的效果
 接下来直接贴出相关代码(ps:代码才是主要)
 
-     // 基于准备好的dom，初始化echarts实例
+// 基于准备好的dom，初始化echarts实例
 var myChart = echarts.init(document.getElementById('main'));
 // 获取echarts的宽度并让y轴居中
-    var center = '-' + $('#main').width() *0.7 /2 + '';
+var center = '-' + $('#main').width() *0.7 /2 + '';
 option = {
     grid:{
       width:'70%'//坐标轴宽度
@@ -48,4 +48,4 @@ $(window).resize(function(){
     myChart.setOption(option);
 })
   
-  
+如果好用请给个星星呀
