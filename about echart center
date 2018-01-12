@@ -11,7 +11,7 @@ option = {
       width:'70%'//坐标轴宽度
     },
     legend: {
-        data:['事例1','事例2']
+        data:['示例1','示例2']
     },
     xAxis:  {
         type: 'category',
