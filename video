@@ -1,0 +1,23 @@
+video标签不能填满父元素(并可能出现黑条或者蓝条)?
+对于video如何填充父元素有几种方法来解决
+#1 对video标签设置css object-fit :fill;但是object-fill虽然一步到位但是兼容效果并不是很好
+ie基本不支持该属性,对于移动端支持性也不好
+#2可以使用transform: scale(a,b);a是宽度放大缩小的比例,b是高度放大缩小的比例对于不支持的浏览器或手机可以尝试加一下
+-web-kit前缀 但是弊端就是视频会变形
+#3通过video本身视频的宽高比例,来确定外层盒子的宽高(对于外层盒子及video使用类似该样式)//这是相对来说较好较为简单的方法//不会导致视频比例失调
+html: <div>
+        <video src="/"></video>
+     </div>
+css: div{
+            position:relative;
+            width:100%;
+            padding-top:70%;//padding-top设置百分比是根据其宽度的大小而不是高度 所以得到的宽高比就是0.7:1
+            height:0;
+        }
+     video{
+           position:absolute;
+           left:0;
+           right:0;
+           margin:auto;
+           top:0;
+     }
