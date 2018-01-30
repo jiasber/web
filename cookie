@@ -1,0 +1,10 @@
+cookie的使用(本文使用依赖jquery的jquery-cookie插件)
+cookie 默认接受字符串 就算你给他传递一个对象他也会转成字符串
+即 var obj = {a:1};$.cookie('user',obj) // "user=%5Bobject%20Object%5D"
+输出$.cookie('user')//"[object Object]"
+比如我们自己需要写一个跟浏览器一样的登录记住用户密码之类的效果 就会发现浏览器为我们省了多少事
+但是也是有一种相对简单的方法去实现浏览器去记住你登陆的帐号密码
+@1用户登录(选择记住密码)
+//全局变量
+var users = {};
+var pwds = {};
