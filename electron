@@ -57,3 +57,29 @@ app.on('activate', () => {
   }
 })
 //main.js end-------------------------------------------------------------------------------------
+//package.json start------------------------------------------------------------------------------
+{
+  "dependencies": {
+    "electron": "^1.7.11",
+    "electron-packager": "^10.1.2",//必须安装
+    "electron-prebuilt": "^1.4.13"//必须安装
+  },
+  "name": "etom",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "packager": "electron-packager ./ main --all --out ./OutApp --version 1.4.13 --overwrite "
+    //1.4.13是electron版本号使用 electron -v 或者 在未打包的文件中cmd electron 可以看到版本号 @./ 表示当前页 @./OutApp 打包出来的文件名 
+    @main 运行的exe文件名
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+使用淘宝镜像安装所有模块 npm install -g cnpm --registry=https://registry.npm.taobao.org @使用淘宝镜像cnpm代替npm@
+cnpm install electron --save 
+cnpm install electron-packager --save
+cnpm install electron-prebuilt --save 
+安装完后修改配置文件即package.json 运行命令 cnpm run-script packager完成打包 会打包出4份文件夹
