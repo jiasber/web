@@ -1,0 +1,15 @@
+@ currentImg 当前图片容器的大小
+@ realImag 实际图片的大小
+background-size: ( realImg / currentImg ) * 100%;
+所要显示的图片精灵距离左侧的距离<-->图片精灵图里第二个icon的距左侧距离offsetLeft
+background-position = -offsetLeft / (realImg - current);
+eg:
+  图片精灵原图(realImg) 100*40
+  存放的容器大小为(currentImg) 16
+  background-size: (100 / 16 ) ==>625%
+  background-position: ( -40 / ( 16 - 100) ) * 100% = 47.61%
+ ----- ---- 
+|     |    |
+|<- ->|    |
+|     |    |
+ ----- ----
