@@ -1,0 +1,51 @@
+配置lib-flexible  + rem 
+
+npm install lib-flexible --save
+
+在项目入口文件main.js中添加如下代码，引入flexible
+import 'lib-flexible'
+
+npm install px2rem-loader --save-dev
+
+build/utils.js文件里
+
+const cssLoader = {
+    loader: 'css-loader',
+    options: {
+      sourceMap: options.sourceMap,
+      importLoaders: 3 //如果无效可尝试加大
+    }
+  }
+const px2remloader = {
+    loader: 'px2rem-loader',
+    options: {
+        remUnit: 75 // 设计稿的1/10 我们假设设计稿是750px
+    }
+}
+const loaders = options.usePostCSS ? [cssLoader, postcssLoader,px2remloader] : [cssLoader]
+
+在vue-loader.conf文件里
+loaders: utils.cssLoaders({
+  sourceMap: sourceMapEnabled,
+  extract: isProduction,
+  usePostCSS: true //这个
+})
+
+axios
+
+npm i axios
+
+main.js 文件里
+
+Vue.prototype.axios = axios;
+
+sass
+npm install --save-dev sass-loader
+//sass-loader依赖于node-sass
+npm install --save-dev node-sass
+webpack.base.conf.js的rules文件里
+{
+  test: /\.sass$/,
+  loaders: ['style', 'css', 'sass']
+}
+引用<style lang="scss"></style>
