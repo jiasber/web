@@ -1,4 +1,5 @@
 vue的自定义指令
+@自定义指令会在其钩子函数期间 遍历所有带有相应指令的元素比如v-focus 会遍历所有带v-focus
 directives:{
   el 触发的元素 
   value 传过来的值 即 v-focus="true" 即 value=>true
@@ -40,4 +41,17 @@ componentUpdated: 指令所在组件VNode及其子VNode全部更新后调用.
 unbind: 只调用一次,指令与元素解绑调用
 
 钩子函数的参数
-el: 指令所绑定的元素,可以用来直接操作DOM
+el: 指令所绑定的元素,可以用来直接操作DOM.
+binding: 一个对象,包含以下属性
+ name: 指令名,不包含v-前缀
+ value: 指令的绑定值v-focus="1" 即绑定值为1
+ oldValue: 指令绑定的前一个值,仅在update和componentUpdated钩子中可用.无论值是否改变都可用
+ expressioni: 字符串形式的指令表达式.v-my-directive="1 + 1" 中，表达式为 "1 + 1".
+ arg：传给指令的参数，可选.例如 v-my-directive:foo 中，参数为 foo
+ modifiers: 一个包含修饰符的对象.例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }.
+vnode: Vue 编译生成的虚拟节点。移步 VNode API 来了解更多详情.
+oldVnode: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用
+!!!!除了 el 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 dataset 来进行
+ 
+
+
