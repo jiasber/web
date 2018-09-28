@@ -1,0 +1,43 @@
+vue的自定义指令
+directives:{
+  el 触发的元素 
+  value 传过来的值 即 v-focus="true" 即 value=>true
+  context.$nextTick() 
+  将回调延迟到下次 DOM 更新循环之后执行。
+  在修改数据之后立即使用它，然后等待 DOM 更新。
+  它跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。
+  
+  focus(el, {value}, {context}){
+     if(value) {
+      context.$nextTick(()=>{
+        el.focus();
+      })
+     }
+  }
+}
+自定义指令的另外一种写法
+focus: {
+    // 指令的定义
+    update: function (el, { value }, { context }) {
+        if (value) {
+            context.$nextTick(() => {
+            el.focus()
+            })
+      }
+    }
+}
+
+自定义指令的钩子函数
+bind: 只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次初始化操作.
+
+inserted: 被绑定元素插入父节点时调用(仅保证父节点存在,但不一定已被插入文档中).
+
+update: 所在组件的VNode更新的时候调用， 但是可能发生在其子元素VNode更新之前,指令的值可能
+发生了改变，也可能没有.但是你可以通过比较更新前后的值来忽略不必要的模板更新.
+
+componentUpdated: 指令所在组件VNode及其子VNode全部更新后调用.
+
+unbind: 只调用一次,指令与元素解绑调用
+
+钩子函数的参数
+el: 指令所绑定的元素,可以用来直接操作DOM
