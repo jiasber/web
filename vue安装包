@@ -49,3 +49,18 @@ webpack.base.conf.js的rules文件里
   loaders: ['style', 'css', 'sass']
 }
 引用<style lang="scss"></style>
+
+安装sass-resources-loader
+
+npm i sass-resources-loader
+修改build里的utils.js文件
+将scss: generateLoaders('sass')
+改成
+scss: generateLoaders('sass').concat(
+  {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: path.resolve(__dirname, '../src/assets/global.scss') // 需要全局引入的sass路径
+    }
+  }
+)
