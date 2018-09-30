@@ -1,0 +1,7 @@
+如果不想让爬虫爬取在根目录创建一个robots.txt文件
+内容 
+User-agent: *
+Disallow: /
+增加seo
+一个页面只能有一个h1
+图片需要加上alt
