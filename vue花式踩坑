@@ -1,2 +1,15 @@
 今天装vue-awesome-swiper 运行项目的时候网页显示堆栈溢出.... 
 将组件名改个名字就可以了....
+
+TypeError: Cannot read property '__ob__' of undefined
+    at a.e.$destroy (vue.min.js:6)
+    at destroy (vue.min.js:6)
+    at _ (vue.min.js:6)
+    at b (vue.min.js:6)
+    at a.__patch__ (vue.min.js:6)
+    at a.e._update (vue.min.js:6)
+    at a.r (vue.min.js:6)
+    at Uo.get (vue.min.js:6)
+    at Uo.run (vue.min.js:6)
+    at Me (vue.min.js:6) "nextTick"
+发现有一个文件里 data(){}只写着这样 还有不正确的属性传值可能导致
