@@ -1,0 +1,39 @@
+@ 至少选中一个（checkbox）
+<el-form class="form-container" :rules="rules" :model="postForm">
+  <el-form-item label="用户申请服务商付费方式：">
+      <el-checkbox label="测试1" @change="choisePayType(1)" v-model="test1" :true-label="1" :false-label="0"></el-checkbox>
+      <div>
+          <el-checkbox label="测试2" @change="choisePayType(2)" v-model="test2" :true-label="1" :false-label="0"></el-checkbox>
+      </div>
+  </el-form-item>
+</el-form>
+data(){
+  return {
+    test1: 1,
+    test: 0
+  }
+}
+methods: {
+  choisePayType(type){
+      // 至少选中一个 
+      if(this.test1 +  this.test2 < 1){
+        switch (type) {
+          // 线下支付
+          case 1:
+              this.test1 = 1;
+            break;
+          // 线上支付
+          case 2:
+              this.test2 = 1;
+            break;
+          default:
+            break;
+        }
+      }
+    }
+}
+@ 自定义校验规则
+<el-form-item label="测试1：" prop="test">
+  <el-input v-model="postForm.test"></el-input>
+</el-form-item>
+prop的值必须在postForm里不然使用自定义校验规则的时候会取到undefined
